@@ -28,8 +28,9 @@ if (GETUVAR(GVAR(timestampChecked),false) && {[ACE_player] call FUNC(canTimestam
     };
 
     _description ctrlSetText format [ // Add timestamp suffix
-        "%1 [%2%3]",
+        "%1%2[%3%4]",
         ctrlText _description,
+        toString [129],
         [_time, GVAR(timestampFormat)] call BIS_fnc_timeToString,
         _ampm
     ];

@@ -93,8 +93,11 @@
     _display displayAddEventHandler ["KeyDown", {(_this select 1) in [200, 208]}];
 
     if !((markerText GVAR(editingMarker)) isEqualTo "") then {
-        //fill text input with text from marker which is being edited
-        _text ctrlSetText (markerText GVAR(editingMarker));
+        // fill text input with text from marker which is being edited
+        private _originalText = markerText GVAR(editingMarker);
+        private _timeIndex = _originalText find ((toString [129]) + "[");
+        if (_timeIndex > 0 ) then { _originalText = _originalText select [0,_timeIndex]; };
+        _text ctrlSetText _originalText;
     };
 
     //Focus on the text input
